@@ -11,7 +11,7 @@ export const getAllTodos = async (): Promise<ITask[]> => {
 
   };
 
-/* export default getAllTodos; */
+export default getAllTodos;
 
 export const addTodo = async (todo: ITask): Promise<ITask> => {
   const res = await fetch(`${baseUrl}/tasks`, {

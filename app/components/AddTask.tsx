@@ -2,13 +2,18 @@
 import { GoPlus } from "react-icons/go";
 import Modal from "./Modal";
 import { FormEventHandler, useState } from "react";
+import { addTodo } from "@/api";
 const AddTask = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [newTaskvalue, setNewTaskValue] = useState<string>("");
-  const handleSubmitNewTodo: FormEventHandler<HTMLFormElement> = (e) => {
+  const handleSubmitNewTodo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    console.log(newTaskvalue);
+    await addTodo({
+      id:"3", text: newTaskvalue
+      
+    });
     setNewTaskValue("");
+    setModalOpen(false);
   }
 
 

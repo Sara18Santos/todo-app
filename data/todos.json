@@ -1,18 +1,32 @@
 {
-    "tasks":[
-        {
-            "id": "1",
-            "text": "buy milk"
-        },
-        
-        {
-            "id": "2",
-            "text": "start project"
-        },
-        
-        {
-            "id": "3",
-            "text": "read book"
-        }
-    ]
+  "tasks": [
+    {
+      "id": "1",
+      "text": "buy milk"
+    },
+    {
+      "id": "2",
+      "text": "start project"
+    },
+    {
+      "id": "3",
+      "text": "read book"
+    },
+    {
+      "id": "3",
+      "text": ""
+    },
+    {
+      "id": "3",
+      "text": "go to the gym"
+    },
+    {
+      "id": "3",
+      "text": ""
+    },
+    {
+      "id": "3",
+      "text": "clean house"
+    }
+  ]
 }
