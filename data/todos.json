@@ -1,32 +1,16 @@
 {
   "tasks": [
     {
-      "id": "1",
-      "text": "buy milk"
+      "id": "c7a39706-d090-4f9f-8e99-4a883c6c6f1f",
+      "text": "read emails"
     },
     {
-      "id": "2",
-      "text": "start project"
-    },
-    {
-      "id": "3",
+      "id": "2e687fcc-ee7d-4273-8308-bba903f32909",
       "text": "read book"
     },
     {
-      "id": "3",
-      "text": ""
-    },
-    {
-      "id": "3",
-      "text": "go to the gym"
-    },
-    {
-      "id": "3",
-      "text": ""
-    },
-    {
-      "id": "3",
-      "text": "clean house"
+      "id": "6d65fe92-8391-4e85-b47c-f992ac07762a",
+      "text": "start project"
     }
   ]
 }

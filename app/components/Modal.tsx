@@ -11,11 +11,11 @@ const Modal: React.FC<ModalProps> = ({ modalOpen, setModalOpen, children }) => {
       <div className="modal-box">
         {children}
         <div className="modal-action">
-          {/* if there is a button in form, it will close the modal */}
-          <button className="btn" onClick={() => setModalOpen(false)}>
+          
+        </div>
+        <button className="btn" onClick={() => setModalOpen(false)}>
             Close
           </button>
-        </div>
       </div>
     </div>
   );
