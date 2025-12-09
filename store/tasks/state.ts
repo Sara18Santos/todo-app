@@ -13,8 +13,9 @@ export const useTaskStore = create<TaskStore>((set) => ({
 
 export const taskState = {
   get: () => useTaskStore.getState().tasks,
-  set: (fn: (tasks: ITask[]) => ITask[]) => {
+   set: (fn: (tasks: ITask[]) => ITask[]) => {
     const { tasks, setTasks } = useTaskStore.getState();
-    setTasks(fn(tasks));
+    const updated = fn(tasks);
+    setTasks(updated);
   },
 };
