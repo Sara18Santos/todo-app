@@ -3,17 +3,34 @@
     {
       "id": "4bb680ce-290e-489b-8c57-4ec112174adf",
       "text": "testar app",
-      "status": "Done"
+      "status": "Done",
+      "dueDate": "2025-12-09T00:00:00.000Z",
+      "description": "",
+      "createdAt": ""
     },
     {
       "id": "ccdc9130-e806-408c-8d05-b6a56c6cc0c8",
       "text": "finish review ",
-      "status": "Review"
+      "status": "Review",
+      "dueDate": "2025-12-10T00:00:00.000Z",
+      "description": "",
+      "createdAt": ""
     },
     {
-      "id": "b28670b1-9df4-45f9-a075-ed52cbec7ed4",
-      "text": "",
-      "status": "Doing"
+      "id": "84a0d893-5190-4ee3-8d4f-c8104a6ca3e1",
+      "text": "add due date to app",
+      "status": "Doing",
+      "createdAt": "2025-12-09T13:53:16.155Z",
+      "dueDate": "2025-12-09T00:00:00.000Z",
+      "description": ""
+    },
+    {
+      "id": "0f50cfdd-dfe0-4533-be27-dd7ac37e1754",
+      "text": "start workshop",
+      "status": "Doing",
+      "createdAt": "2025-12-09T14:09:00.726Z",
+      "dueDate": "2025-12-12T00:00:00.000Z",
+      "description": ""
     }
   ]
 }

@@ -1,2 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+body {
+    color: rgb(223, 213, 213);
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 23;
+}
