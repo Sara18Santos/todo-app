@@ -1,10 +1,9 @@
-import TodoList from "./app/components/TodoList";
 import { ITask } from "./types/tasks";
 
 const baseUrl = 'http://localhost:3001';
 
 export const getAllTodos = async (): Promise<ITask[]> => {
-    const res = await fetch(`${baseUrl}/tasks`);
+    const res = await fetch(`${baseUrl}/tasks`, {cache:'no-store'});
 
     const todos: ITask[] = await res.json();
     return todos;
