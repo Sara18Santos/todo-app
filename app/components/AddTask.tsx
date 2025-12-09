@@ -14,6 +14,8 @@ const AddTask = () => {
   const [newTaskvalue, setNewTaskValue] = useState<string>("");
   const [status, setStatus] = useState("Doing"); // default value
   const [dueDateInput, setDueDateInput] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+
   const handleSubmitNewTodo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     await addTodo({
@@ -22,11 +24,12 @@ const AddTask = () => {
       status: status,
       createdAt: new Date().toISOString(),
       dueDate: inputDateToIso(dueDateInput),
-      description: "",
+      description: description.trim() || undefined, //send only if filled
     });
     setNewTaskValue("");
     setStatus("Doing");
     setDueDateInput("");
+    setDescription("");
     setModalOpen(false);
     router.refresh();
   };
@@ -62,7 +65,16 @@ const AddTask = () => {
               value={dueDateInput}
               onChange={(e) => setDueDateInput(e.target.value)}
             />
-
+            <label className="label">
+              <span className="label-text">Description (optional)</span>
+            </label>
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              rows={3}
+              placeholder="Add context, notes, ..."
+              className="textarea textarea-bordered w-full"
+            ></textarea>
             <button type="submit" className="btn">
               Submit
             </button>

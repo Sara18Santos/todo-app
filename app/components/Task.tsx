@@ -20,6 +20,9 @@ const Task: React.FC<TaskProps> = ({ task }) => {
   const [dueDateInput, setDueDateInput] = useState<string>(
     isoToInputDate(task.dueDate)
   );
+  const [description, setDescription] = useState<string>(
+    task.description ?? ""
+  );
   const handleSubmitEditTodo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     await editTodo({
@@ -58,6 +61,19 @@ const Task: React.FC<TaskProps> = ({ task }) => {
       <td>
         <span className={getStatusBadgeClass(task.status)}>{task.status}</span>
       </td>
+
+      {/* Description*/}
+
+      <td className="align-top w-1/3">
+        {task.description ? (
+          <p className="text-sm text-gray-300 break-words line-clamp-2">
+            {task.description}
+          </p>
+        ) : (
+          <span className="text-sm text-gray-500">—</span>
+        )}
+      </td>
+
       <td>
         <div className="flex flex-col">
           <span className="text-xs text-gray-500">
@@ -95,6 +111,19 @@ const Task: React.FC<TaskProps> = ({ task }) => {
                 value={dueDateInput}
                 onChange={(e) => setDueDateInput(e.target.value)}
               />
+
+              {/* Description (optional) */}
+              <label className="label">
+                <span className="label-text">Description (optional)</span>
+              </label>
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                rows={3}
+                placeholder="Add context, steps, notes…"
+                className="textarea textarea-bordered w-full"
+              />
+
               <button type="submit" className="btn">
                 Submit
               </button>
