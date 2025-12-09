@@ -3,16 +3,16 @@
     {
       "id": "4bb680ce-290e-489b-8c57-4ec112174adf",
       "text": "testar app",
-      "status": "Review"
+      "status": "Done"
     },
     {
       "id": "ccdc9130-e806-408c-8d05-b6a56c6cc0c8",
       "text": "finish review ",
-      "status": "Doing"
+      "status": "Review"
     },
     {
       "id": "b28670b1-9df4-45f9-a075-ed52cbec7ed4",
-      "text": "read a book",
+      "text": "",
       "status": "Doing"
     }
   ]
