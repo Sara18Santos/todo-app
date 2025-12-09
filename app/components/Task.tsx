@@ -5,7 +5,7 @@ import { FiEdit } from "react-icons/fi";
 import { FiTrash2 } from "react-icons/fi";
 import Modal from "./Modal";
 import { useRouter } from "next/navigation";
-import { editTodo } from "@/api";
+import { deleteTodo, editTodo } from "@/api";
 
 interface TaskProps {
   task: ITask;
@@ -23,6 +23,11 @@ const Task: React.FC<TaskProps> = ({ task }) => {
     });
     setTaskToEdit("");
     setOpenModalEdit(false);
+    router.refresh();
+  };
+  const handleDeleteTask = async (id: string) => {
+    await deleteTodo(id);
+    setOpenModalDelete(false);
     router.refresh();
   };
 
@@ -54,14 +59,23 @@ const Task: React.FC<TaskProps> = ({ task }) => {
             </div>
           </form>
         </Modal>
-        <FiTrash2 size={20} cursor="pointer" className="text-red-500" />{" "}
+        <FiTrash2 size={20} onClick={() => setOpenModalDelete(true)} cursor="pointer" className="text-red-500" />
+        <Modal modalOpen={openModalDelete} setModalOpen={setOpenModalDelete}>
+          <h3 className="text-lg">
+            Are you sure, you want to delete this task?
+          </h3>
+          <div className="modal-action">
+            <button
+              onClick={() => handleDeleteTask(task.id)}
+              className="btn btn-primary"
+            >
+              Yes
+            </button>
+          </div>
+        </Modal>
       </td>
     </tr>
   );
 };
 
 export default Task;
-function uuidv4(): string {
-  throw new Error("Function not implemented.");
-}
-

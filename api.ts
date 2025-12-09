@@ -32,14 +32,10 @@ export const editTodo = async (todo: ITask): Promise<ITask> => {
   return updatedTodo;
 }
 
-/* export const deleteTodo = async (todo: ITask): Promise<ITask> => {
-  const res = await fetch(`${baseUrl}/tasks`, {
-    method: 'DELETE', 
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(todo)
+export const deleteTodo = async (id: string): Promise<void> => {
+  await fetch(`${baseUrl}/tasks/${id}`, {
+    method: 'DELETE'
   });
-  const newTodo = await res.json();
-  return newTodo;
 }
- */
+
 
