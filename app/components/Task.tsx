@@ -6,6 +6,7 @@ import { FiTrash2 } from "react-icons/fi";
 import Modal from "./Modal";
 import { useRouter } from "next/navigation";
 import { deleteTodo, editTodo } from "@/api";
+import StatusSelect from "./StatusSelect ";
 
 interface TaskProps {
   task: ITask;
@@ -15,11 +16,13 @@ const Task: React.FC<TaskProps> = ({ task }) => {
   const [openModalEdit, setOpenModalEdit] = useState<boolean>(false);
   const [openModalDelete, setOpenModalDelete] = useState<boolean>(false);
   const [taskToEdit, setTaskToEdit] = useState<string>(task.text);
+  const [status, setStatus] = useState(task.status);
   const handleSubmitEditTodo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     await editTodo({
       id: task.id,
       text: taskToEdit,
+      status: status
     });
     setTaskToEdit("");
     setOpenModalEdit(false);
@@ -30,10 +33,26 @@ const Task: React.FC<TaskProps> = ({ task }) => {
     setOpenModalDelete(false);
     router.refresh();
   };
+  const getStatusBadgeClass = (status: string) => { // should create status in utils folder to reuse in task and AddTask
+  switch (status.toLowerCase()) {
+    case "doing":
+      return "badge badge-info";
+    case "review":
+      return "badge badge-warning";
+    case "done":
+      return "badge badge-success";
+    default:
+      return "badge badge-outline";
+  }
+};
+
 
   return (
     <tr key={task.id}>
       <td className="w-full">{task.text}</td>
+      <td>
+        <span className={getStatusBadgeClass(task.status)}>{task.status}</span>
+        </td>
       <td className="flex gap-5">
         <FiEdit
           onClick={() => setOpenModalEdit(true)}
@@ -52,6 +71,7 @@ const Task: React.FC<TaskProps> = ({ task }) => {
                 placeholder="Type here"
                 className="input input-bordered w-full"
               />
+              <StatusSelect  value={status} onChange={setStatus} />
 
               <button type="submit" className="btn">
                 Submit
@@ -64,13 +84,11 @@ const Task: React.FC<TaskProps> = ({ task }) => {
           <h3 className="text-lg">
             Are you sure, you want to delete this task?
           </h3>
-          <div className="modal-action">
-            <button
-              onClick={() => handleDeleteTask(task.id)}
-              className="btn btn-primary"
-            >
-              Yes
-            </button>
+          <div className="modal-action flex justify-center gap-4">
+            <button 
+            className="btn btn-primary"
+            onClick={() => handleDeleteTask(task.id)}
+            >Yes</button>
           </div>
         </Modal>
       </td>

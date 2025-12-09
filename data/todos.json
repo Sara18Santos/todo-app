@@ -1,12 +1,19 @@
 {
   "tasks": [
     {
-      "id": "c7a39706-d090-4f9f-8e99-4a883c6c6f1f",
-      "text": "read mail"
+      "id": "4bb680ce-290e-489b-8c57-4ec112174adf",
+      "text": "testar app",
+      "status": "Review"
     },
     {
-      "id": "2e687fcc-ee7d-4273-8308-bba903f32909",
-      "text": "read one book"
+      "id": "ccdc9130-e806-408c-8d05-b6a56c6cc0c8",
+      "text": "finish review ",
+      "status": "Doing"
+    },
+    {
+      "id": "b28670b1-9df4-45f9-a075-ed52cbec7ed4",
+      "text": "read a book",
+      "status": "Doing"
     }
   ]
 }

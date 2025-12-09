@@ -5,19 +5,22 @@ import { FormEventHandler, useState } from "react";
 import { addTodo } from "@/api";
 import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from 'uuid';
+import StatusSelect from "./StatusSelect ";
 
 const AddTask = () => {
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [newTaskvalue, setNewTaskValue] = useState<string>("");
+  const [status, setStatus] = useState("Doing"); // default value
   const handleSubmitNewTodo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     await addTodo({
-      id:uuidv4(), 
-      text: newTaskvalue
-      
+      id: uuidv4(),
+      text: newTaskvalue,
+      status: status
     });
     setNewTaskValue("");
+    setStatus("Doing");
     setModalOpen(false);
     router.refresh();
   };
@@ -35,6 +38,7 @@ const AddTask = () => {
             type="text" 
             placeholder="Type here" 
             className="input input-bordered w-full" />
+            <StatusSelect  value={status} onChange={setStatus} />
 
             <button type='submit' className="btn">Submit</button>
           </div>
