@@ -9,12 +9,12 @@ const TodoList: React.FC<TodoListProps> = ({ tasks }) => {
   return (
     <div className="overflow-x-auto">
       <table className="table w-full">
-        <thead>
+        <thead className="text-lg font-bold">
           <tr>
             <th>Task</th>
             <th>Status</th>
             <td>Description</td>
-            <th>Date</th> 
+            <th className="date-column">Date</th> 
             <th>Actions</th>
           </tr>
         </thead>

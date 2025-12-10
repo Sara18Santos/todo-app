@@ -37,10 +37,10 @@ const AddTask = () => {
     <div>
       <button
         onClick={() => setModalOpen(true)}
-        className="btn btn-primary w-full"
+        className="btn btn-primary w-full font-bold text-lg"
       >
         {" "}
-        Add new Task <GoPlus className="ml-2" size={15} />{" "}
+        Add new Task <GoPlus className="ml-2" size={22} />{" "}
       </button>
       <Modal modalOpen={modalOpen} setModalOpen={setModalOpen}>
         <form onSubmit={handleSubmitNewTodo}>

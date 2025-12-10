@@ -61,8 +61,8 @@ const Task: React.FC<TaskProps> = ({ task }) => {
   };
   return (
     <tr key={currentTask.id}>
-      <td className="w-full">{currentTask.text}</td>
-      <td>
+      <td className="w-full text-lg">{currentTask.text}</td>
+      <td className="text-base">
         <span className={getStatusBadgeClass(currentTask.status)}>{currentTask.status}</span>
       </td>
 
@@ -79,11 +79,12 @@ const Task: React.FC<TaskProps> = ({ task }) => {
       </td>
 
       <td>
-        <div className="flex flex-col">
+        <div className="date-column">
           <span className="text-xs text-gray-500">
             Created: {formatDDMMYYYY(currentTask.createdAt)}
           </span>
-          <span className="text-xs">Due: {formatDDMMYYYY(currentTask.dueDate)}</span>
+          <br></br>
+          <span className="text-sm">Due: {formatDDMMYYYY(currentTask.dueDate)}</span>
         </div>
       </td>
 
@@ -92,7 +93,7 @@ const Task: React.FC<TaskProps> = ({ task }) => {
           onClick={() => setOpenModalEdit(true)}
           cursor="pointer"
           size={20}
-          className="text-blue-500"
+          className="text-blue-500 text-base"
         />
         <Modal modalOpen={openModalEdit} setModalOpen={setOpenModalEdit}>
           <form onSubmit={handleSubmitEditTodo}>
@@ -128,7 +129,7 @@ const Task: React.FC<TaskProps> = ({ task }) => {
                 className="textarea textarea-bordered w-full"
               />
 
-              <button type="submit" className="btn">
+              <button type="submit" className="btn btn-accent">
                 Submit
               </button>
             </div>

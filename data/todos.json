@@ -28,27 +28,6 @@
       "createdAt": "2025-12-09T14:09:00.726Z",
       "dueDate": "2025-12-12T00:00:00.000Z",
       "description": ""
-    },
-    {
-      "id": "76fb3377-f3bd-4acf-ac34-61ed3e41492b",
-      "text": "test description ",
-      "status": "Doing",
-      "createdAt": "2025-12-09T14:22:49.088Z",
-      "description": "this works"
-    },
-    {
-      "id": "3c645617-db71-4375-a5d7-2802a3bb8125",
-      "createdAt": "2025-12-10T11:18:33.533Z",
-      "text": "test crud ",
-      "status": "Doing",
-      "dueDate": "2025-12-11T00:00:00.000Z"
-    },
-    {
-      "id": "211aeca3-ddf4-4954-afcd-4d1afd42d5de",
-      "createdAt": "2025-12-10T11:29:25.123Z",
-      "text": "test",
-      "status": "Doing",
-      "description": "teste"
     }
   ]
 }
