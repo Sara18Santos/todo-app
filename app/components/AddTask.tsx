@@ -74,7 +74,7 @@ const AddTask = () => {
               placeholder="Add context, notes, ..."
               className="textarea textarea-bordered w-full"
             ></textarea>
-            <button type="submit" className="btn">
+            <button type="submit" className="btn btn-primary btn-lg">
               Submit
             </button>
           </div>

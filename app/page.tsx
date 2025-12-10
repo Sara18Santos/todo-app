@@ -12,6 +12,7 @@ export default async function Home() {
         <AddTask/>
       </div>
       <TodoListWrapper tasks={tasks} />
+      {/* <input type="checkbox" value="sunset" className="toggle theme-controller" /> */}
     </main>
   );
 }

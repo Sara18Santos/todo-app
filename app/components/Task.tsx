@@ -129,7 +129,7 @@ const Task: React.FC<TaskProps> = ({ task }) => {
                 className="textarea textarea-bordered w-full"
               />
 
-              <button type="submit" className="btn btn-accent">
+              <button type="submit" className="btn btn-lg btn-primary">
                 Submit
               </button>
             </div>
