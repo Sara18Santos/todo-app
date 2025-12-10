@@ -1,6 +1,6 @@
 "use client";
 import { ITask } from "@/types/tasks";
-import { FormEventHandler, useMemo, useState } from "react";
+import { FormEventHandler, useState } from "react";
 import { FiEdit } from "react-icons/fi";
 import { FiTrash2 } from "react-icons/fi";
 import Modal from "./Modal";
@@ -8,11 +8,16 @@ import { useRouter } from "next/navigation";
 import { deleteTodo, editTodo } from "@/api";
 import StatusSelect from "./StatusSelect";
 import { formatDDMMYYYY, isoToInputDate, inputDateToIso } from "@/utils/date";
+import { removeTask, updateTask } from "@/store/tasks/actions";
+import { useTaskStore } from "@/store/tasks/state";
 interface TaskProps {
   task: ITask;
 }
 const Task: React.FC<TaskProps> = ({ task }) => {
-  const router = useRouter();
+  // const router = useRouter();
+  const tasks = useTaskStore((s) => s.tasks);
+  const currentTask = tasks.find((t) => t.id === task.id);
+
   const [openModalEdit, setOpenModalEdit] = useState<boolean>(false);
   const [openModalDelete, setOpenModalDelete] = useState<boolean>(false);
   const [taskToEdit, setTaskToEdit] = useState<string>(task.text);
@@ -23,24 +28,23 @@ const Task: React.FC<TaskProps> = ({ task }) => {
   const [description, setDescription] = useState<string>(
     task.description ?? ""
   );
+  if (!currentTask) return null;
   const handleSubmitEditTodo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    await editTodo({
-      id: task.id,
+    await updateTask(task.id,{
       text: taskToEdit,
       status: status,
       dueDate: inputDateToIso(dueDateInput),
-      description: "",
-      createdAt: "",
+      description:description.trim() || undefined
     });
-    setTaskToEdit("");
+    //setTaskToEdit("");
     setOpenModalEdit(false);
-    router.refresh();
+    //router.refresh();
   };
-  const handleDeleteTask = async (id: string) => {
-    await deleteTodo(id);
+  const handleDeleteTask = async () => {
+    await removeTask(currentTask.id)
     setOpenModalDelete(false);
-    router.refresh();
+    //router.refresh();
   };
   const getStatusBadgeClass = (status: string) => {
     // should create status in utils folder to reuse in task and AddTask
@@ -56,18 +60,18 @@ const Task: React.FC<TaskProps> = ({ task }) => {
     }
   };
   return (
-    <tr key={task.id}>
-      <td className="w-full">{task.text}</td>
+    <tr key={currentTask.id}>
+      <td className="w-full">{currentTask.text}</td>
       <td>
-        <span className={getStatusBadgeClass(task.status)}>{task.status}</span>
+        <span className={getStatusBadgeClass(currentTask.status)}>{currentTask.status}</span>
       </td>
 
       {/* Description*/}
 
       <td className="align-top w-1/3">
-        {task.description ? (
+        {currentTask.description ? (
           <p className="text-sm text-gray-300 break-words line-clamp-2">
-            {task.description}
+            {currentTask.description}
           </p>
         ) : (
           <span className="text-sm text-gray-500">—</span>
@@ -77,9 +81,9 @@ const Task: React.FC<TaskProps> = ({ task }) => {
       <td>
         <div className="flex flex-col">
           <span className="text-xs text-gray-500">
-            Created: {formatDDMMYYYY(task.createdAt)}
+            Created: {formatDDMMYYYY(currentTask.createdAt)}
           </span>
-          <span className="text-xs">Due: {formatDDMMYYYY(task.dueDate)}</span>
+          <span className="text-xs">Due: {formatDDMMYYYY(currentTask.dueDate)}</span>
         </div>
       </td>
 
@@ -143,7 +147,7 @@ const Task: React.FC<TaskProps> = ({ task }) => {
           <div className="modal-action flex justify-center gap-4">
             <button
               className="btn btn-primary"
-              onClick={() => handleDeleteTask(task.id)}
+              onClick={handleDeleteTask}
             >
               Yes
             </button>

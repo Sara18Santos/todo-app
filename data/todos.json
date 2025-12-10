@@ -5,8 +5,7 @@
       "text": "testar app",
       "status": "Done",
       "dueDate": "2025-12-09T00:00:00.000Z",
-      "description": "",
-      "createdAt": ""
+      "description": "contexto"
     },
     {
       "id": "ccdc9130-e806-408c-8d05-b6a56c6cc0c8",
@@ -19,10 +18,8 @@
     {
       "id": "84a0d893-5190-4ee3-8d4f-c8104a6ca3e1",
       "text": "add due date to app",
-      "status": "Doing",
-      "createdAt": "2025-12-09T13:53:16.155Z",
-      "dueDate": "2025-12-09T00:00:00.000Z",
-      "description": ""
+      "status": "Done",
+      "dueDate": "2025-12-09T00:00:00.000Z"
     },
     {
       "id": "0f50cfdd-dfe0-4533-be27-dd7ac37e1754",
@@ -38,6 +35,20 @@
       "status": "Doing",
       "createdAt": "2025-12-09T14:22:49.088Z",
       "description": "this works"
+    },
+    {
+      "id": "3c645617-db71-4375-a5d7-2802a3bb8125",
+      "createdAt": "2025-12-10T11:18:33.533Z",
+      "text": "test crud ",
+      "status": "Doing",
+      "dueDate": "2025-12-11T00:00:00.000Z"
+    },
+    {
+      "id": "211aeca3-ddf4-4954-afcd-4d1afd42d5de",
+      "createdAt": "2025-12-10T11:29:25.123Z",
+      "text": "test",
+      "status": "Doing",
+      "description": "teste"
     }
   ]
 }

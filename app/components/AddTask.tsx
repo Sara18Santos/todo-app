@@ -7,9 +7,10 @@ import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 import StatusSelect from "./StatusSelect";
 import { inputDateToIso } from "@/utils/date";
+import { createTask } from "@/store/tasks/actions";
 
 const AddTask = () => {
-  const router = useRouter();
+  //const router = useRouter();
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [newTaskvalue, setNewTaskValue] = useState<string>("");
   const [status, setStatus] = useState("Doing"); // default value
@@ -18,20 +19,18 @@ const AddTask = () => {
 
   const handleSubmitNewTodo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    await addTodo({
-      id: uuidv4(),
+    await createTask({
       text: newTaskvalue,
       status: status,
-      createdAt: new Date().toISOString(),
       dueDate: inputDateToIso(dueDateInput),
-      description: description.trim() || undefined, //send only if filled
+      description: description.trim() || undefined, 
     });
     setNewTaskValue("");
     setStatus("Doing");
     setDueDateInput("");
     setDescription("");
     setModalOpen(false);
-    router.refresh();
+    // router.refresh();
   };
 
   return (
